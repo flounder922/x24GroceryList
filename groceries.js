@@ -28,24 +28,29 @@ function addItem()  {
     var input = document.getElementById("newItem").value;
     var list = document.getElementById("listDisplay");
 
-    var item = document.createElement("li");
-    var btnClose = document.createElement("button");
-    var iconClose = document.createElement("span");
+    if(myList.indexOf(input) < 0) {
+        myList.push(input);
+        console.log(myList);
 
-    btnClose.classList.add("btn");
-    btnClose.classList.add("btn-danger");
-    btnClose.classList.add("btn-xs");
-    btnClose.classList.add("glyphicon");
-    btnClose.classList.add("glyphicon-remove");
+        var item = document.createElement("li");
+        var btnClose = document.createElement("button");
+        var iconClose = document.createElement("span");
 
-    var itemName = document.createTextNode(input);
+        btnClose.classList.add("btn");
+        btnClose.classList.add("btn-danger");
+        btnClose.classList.add("btn-xs");
+        btnClose.classList.add("glyphicon");
+        btnClose.classList.add("glyphicon-remove");
 
-    btnClose.addEventListener("click", removeParentListItem);
+        var itemName = document.createTextNode(input);
 
-    item.appendChild(itemName);
-    list.appendChild(item);
-    btnClose.appendChild(iconClose);
-    item.appendChild(btnClose);
+        btnClose.addEventListener("click", removeParentListItem);
+
+        item.appendChild(itemName);
+        list.appendChild(item);
+        btnClose.appendChild(iconClose);
+        item.appendChild(btnClose);
+    }
 
     document.getElementById("newItem").value = "";
 }
